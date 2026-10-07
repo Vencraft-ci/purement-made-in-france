@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="Purement MIF">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Purement Made in France"><meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Purement Made in France"><meta property="og:description" content="Boutique en ligne de produits cosmétiques pour toute la famille et divers. Commandez sur WhatsApp.">
-<meta property="og:image" content="https://VOTRE-DOMAINE.com/img/apercu-partage.jpg"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://vencraft-ci.github.io/purement-made-in-france/img/apercu-partage.jpg"><meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -58,7 +58,7 @@ const ic=(n,x='')=>`<svg class="i ${x}" viewBox="0 0 24 24" aria-hidden="true">$
 const im=(name,alt='')=>`<img loading="lazy" src="img/${name}.jpg" alt="${esc(alt)}" onerror="this.onerror=null;this.src='img/logo.png';this.classList.add('fb')">`;
 const sv=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
 const st=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-const SITE=location.protocol.startsWith('http')?location.origin:'';
+const SITE=location.protocol.startsWith('http')?location.origin+location.pathname.replace(/\/[^\/]*$/,''):'';
 function toast(t,a){const e=document.createElement('div');e.className='toast';e.innerHTML=esc(t)+(a?` <button onclick="go('panier')">${a}</button>`:'');document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
 function burst(el,em=['❤️','💙','🤍','✨'],n=10){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;for(let i=0;i<n;i++){const s=document.createElement('span');s.className='bu';s.textContent=em[i%em.length];s.style.cssText=`left:${x}px;top:${y}px;--dx:${(Math.random()-.5)*170}px;--dy:${-60-Math.random()*120}px;--r:${(Math.random()-.5)*70}deg`;document.body.appendChild(s);setTimeout(()=>s.remove(),1000)}}
 /* ===== DONNÉES ===== */
@@ -172,7 +172,7 @@ function showP(id,hi){const p=BY[id],its=p.items,L=$('#pdb'),A=$('#act');let it=
   upd();if(vg){vg.addEventListener('scroll',mt,{passive:true});L.querySelectorAll('.ma').forEach(b=>b.onclick=()=>vg.scrollBy({left:+b.dataset.s*vg.clientWidth*.8,behavior:'smooth'}));setTimeout(mt,60);addEventListener('resize',mt)}}
 function zoom(n){layer(`<div class="sheet zm">${X}<img src="img/produit-${pad(n)}.jpg" alt="" onerror="${FB}"></div>`)}
 /* ===== PARTAGE ===== */
-function shareItem(n){const i=IT[n],p=i.prod,url=SITE+'/produit/'+pad(n),text=`${p.name}${i.d?' — '+i.d:''} — ${F(i.p)}`;doShare(p.name,text,url)}
+function shareItem(n){const i=IT[n],p=i.prod,url=SITE+'/#p'+n,text=`${p.name}${i.d?' — '+i.d:''} — ${F(i.p)}`;doShare(p.name,text,url)}
 function shareSite(){doShare('Purement Made in France','Purement Made in France — boutique en ligne',SITE+'/')}
 function doShare(title,text,url){if(navigator.share){navigator.share({title,text,url}).catch(()=>{});return}
   const el=layer(`<div class="sheet"><div class="pd" style="padding-top:22px">${X}<h3>Partager</h3><p style="font-size:14px">${esc(text)}</p><div style="display:grid;gap:10px"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(text+'\n'+url)}">WhatsApp</a><a class="btn out" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}">Facebook</a><button class="btn out" id="cp">Copier le lien</button></div></div></div>`);
