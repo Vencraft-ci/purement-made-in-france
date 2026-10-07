@@ -1,0 +1,22 @@
+PUREMENT MADE IN FRANCE — SITE INSTALLABLE (PWA)
+
+CONTENU
+- index.html ........ le site (page et code)
+- style.css ......... tout le style (couleurs, mise en page)
+- catalogue.js ...... les 123 articles, repris à l'identique du cahier des charges
+- catalogue.json .... même catalogue (source utilisée par build.py)
+- manifest.webmanifest + sw.js ... installation comme application + ouverture rapide
+- produit/NNN/ ...... 123 pages de partage (une par article) : aperçu image + nom + prix sur WhatsApp/Facebook/TikTok
+- img/ .............. logo, icônes de l'application, image d'aperçu du lien (tirés de votre logo)
+- build.py .......... à relancer après chaque changement de prix/produit ou ajout de photos
+
+MISE EN LIGNE (3 étapes)
+1. Ouvrir build.py, remplacer SITE = "https://VOTRE-DOMAINE.com" par l'adresse réelle, puis lancer :  python3 build.py
+2. Envoyer TOUT le dossier à la racine d'un hébergement HTTPS (Netlify, Cloudflare Pages, Vercel, hébergeur classique).
+3. Ajouter les photos dans img/ avec les noms de la section 21 (produit-039.jpg, cat-biberons.jpg, accueil-01.jpg...).
+   Une photo manquante est remplacée par le logo. Relancer build.py pour que l'aperçu de partage utilise la vraie photo.
+
+MODIFIER SANS TOUCHER AU CODE
+- Prix / noms / conseils : catalogue.json puis python3 build.py
+- Zones de livraison, moyens de paiement, textes du carrousel, numéros, Facebook, TikTok, adresse Google Maps :
+  bloc « RÉGLAGES » (CFG) au début du script dans index.html.

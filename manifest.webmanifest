@@ -1,0 +1,17 @@
+{
+  "name": "Purement Made in France",
+  "short_name": "Purement MIF",
+  "description": "Boutique en ligne de produits cosmétiques pour toute la famille et divers.",
+  "lang": "fr",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#12239E",
+  "icons": [
+    {"src": "img/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "img/icone-app.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "img/icone-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
